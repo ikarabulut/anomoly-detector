@@ -1,0 +1,15 @@
+services:
+  jupyter:
+    build: ./jupyter
+    ports:
+      - 4001:4001
+    volumes:
+      - jupyter_data:/src
+
+volumes:
+  jupyter_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./jupyter
+      o: bind

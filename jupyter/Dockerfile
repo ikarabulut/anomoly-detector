@@ -3,8 +3,8 @@ FROM python:3.7
 WORKDIR /src
 ENV JUPYTER_TOKEN="password"
 
-RUN pip install jupyter
-
 COPY . /src
+
+RUN pip install -r requirements.txt
 
 CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=4001", "--no-browser", "--allow-root"]
