@@ -1,6 +1,6 @@
 # Anomoly Detector
 
-Currently this app has functionality to run a jupyter notebook in a docker container to view the hello-world notebook.
+Currently this app has functionality to run a jupyter notebook in a docker container with a bind mount to create and run notebooks in server.
 
 ## Techniques employed
 
@@ -14,6 +14,6 @@ Currently this app has functionality to run a jupyter notebook in a docker conta
 
 ## To run locally
 
-- Navigate to `./anomoly_detector/jupyter`
-- Run `docker build . -t notebook`
-- Run `docker run -d -p 4001:4001 notebook`
+- `docker compose up`
+- Navigate to localhost:4001
+  - password = password
