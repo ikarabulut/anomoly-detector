@@ -6,6 +6,11 @@ services:
     volumes:
       - jupyter_data:/src
 
+  api:
+    build: ./service
+    ports:
+      - 8000:8000
+
 volumes:
   jupyter_data:
     driver: local

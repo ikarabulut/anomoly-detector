@@ -12,7 +12,7 @@ RUN python -m venv /venv
 
 WORKDIR /usr/src
 
-COPY pyproject.toml poetry.lock README.md ./
+COPY pyproject.toml poetry.lock README.md model.joblib ./
 COPY api ./api
 
 RUN poetry config virtualenvs.in-project true && \
