@@ -1,10 +1,17 @@
-FROM python:3.7
+FROM python:3.11
 
 WORKDIR /src
+
 ENV JUPYTER_TOKEN="password"
+ENV POETRY_VIRTUALENVS_CREATE=false
+ENV POETRY_VERSION=1.3.1
 
-COPY . /src
+RUN pip install "poetry==$POETRY_VERSION"
 
-RUN pip install -r requirements.txt
+COPY pyproject.toml poetry.lock ./
+
+RUN poetry install --no-root --no-interaction
+
+COPY . ./
 
 CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--no-browser", "--allow-root"]
