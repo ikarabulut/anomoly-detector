@@ -1,2 +1,2 @@
 run:
-    docker run -v $(PWD):/src -p 8888:8888 jupyter
+	docker run -v $(PWD):/src -d -p 8888:8888 jupyter
