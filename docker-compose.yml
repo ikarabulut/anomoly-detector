@@ -2,7 +2,7 @@ services:
   jupyter:
     build: ./jupyter
     ports:
-      - 4001:4001
+      - 8001:8001
     volumes:
       - jupyter_data:/src
 
