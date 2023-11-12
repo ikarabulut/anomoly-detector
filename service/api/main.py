@@ -1,4 +1,6 @@
 from fastapi import FastAPI
+from pydantic import BaseModel
+from typing import List, Optional
 from joblib import load
 
 clf = load("model.joblib")
@@ -13,3 +15,20 @@ def model_information():
 
 if __name__ == "__main__":
     print("running... ")
+
+
+class PredictionRequest(BaseModel):
+    feature_vector: List[float]
+    score: Optional[bool] = False
+
+
+@app.post("/prediction")
+def predict(req: PredictionRequest):
+    prediction = clf.predict([req.feature_vector])
+    response = {"is_inlier": int(prediction[0])}
+
+    if req.score is True:
+        score = clf.score_samples([req.feature_vector])
+        response["anomaly_score"] = score[0]
+
+    return response
